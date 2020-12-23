@@ -10,10 +10,10 @@ cd naritoblog2020
 ```
 
 ```
-vim backend/src/project/settings.py
+vim backend/project/settings.py
 ```
 
-サーバーの IP アドレスを足す(公開しないならば不要)
+サーバーの IP アドレスを足す(サーバーではなく、手元の PC で動かしたいなら不要)
 
 ```python
 ALLOWED_HOSTS = ['127.0.0.1', 'backend', 'Add Your IP Address!!']
@@ -25,7 +25,7 @@ docker-compose up
 
 〜この辺でコーヒーなどを淹れて待つ〜
 
-http://your-ip にアクセスする（公開しないなら、http://127.0.0.1 にアクセス）
+http://your-ip にアクセスする（サーバーではなく、手元の PC で動かしたいならhttp://127.0.0.1 にアクセス）
 
 username: admin
 password: admin123
