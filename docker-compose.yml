@@ -1,0 +1,41 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  backend:
+    build: ./backend
+    command: bash -c "python manage.py migrate && python manage.py initadmin && python manage.py collectstatic --no-input --clear && gunicorn --workers 3  --bind  0.0.0.0:8000 project.wsgi:application"
+    expose:
+      - "8000"
+    volumes:
+      - static:/code/static_root
+      - media:/code/media
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    expose:
+      - "3000"
+    command: "npm run start"
+
+  nginx:
+    image: nginx:1.13
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx_conf:/etc/nginx/conf.d
+      - static:/code/static_root
+      - media:/code/media
+    depends_on:
+      - backend
+      - frontend
+
+volumes:
+  static:
+  media:
