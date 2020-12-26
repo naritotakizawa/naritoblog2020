@@ -66,13 +66,15 @@ export default {
     },
     strategies: {
       local: {
-        tokenType: 'JWT',
+        tokenType: 'Token',
+        tokenName: 'Authorization',
         endpoints: {
           login: {
-            url: '/auth/jwt/create/',
+            url: '/auth/token/login/',
             method: 'post',
-            propertyName: 'access',
+            propertyName: 'auth_token',
           },
+          logout: { url: '/auth/token/logout/', method: 'post' },
           user: { url: '/auth/users/me/', method: 'get', propertyName: false },
         },
       },
