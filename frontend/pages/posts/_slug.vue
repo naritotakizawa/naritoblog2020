@@ -1,5 +1,10 @@
 <template>
   <article class="min-container">
+    <SocialHead
+      :title="post.title"
+      :description="post.description"
+      :image="post.image"
+    />
     <p v-if="$fetchState.pending" class="loading-wrapper">
       <span class="loading"></span>
     </p>
@@ -10,7 +15,7 @@
       <h1>{{ post.title }}</h1>
     </header>
 
-    <p v-html="post.text" id="content"></p>
+    <p id="content" v-html="post.text"></p>
 
     <div v-if="auth.loggedIn" id="admin-menu">
       <NuxtLink
@@ -25,10 +30,10 @@
     <transition name="zoom">
       <Dialog v-if="isOpen" @close="isOpen = false">
         <p class="dialog-text">削除します。よろしいですか？</p>
-        <button type="button" @click="deletePost" class="dialog-button">
+        <button type="button" class="dialog-button" @click="deletePost">
           はい
         </button>
-        <button type="button" @click="isOpen = false" class="dialog-button">
+        <button type="button" class="dialog-button" @click="isOpen = false">
           いいえ
         </button>
       </Dialog>
@@ -37,6 +42,9 @@
 </template>
 <script>
 export default {
+  async fetch() {
+    this.post = await this.$axios.$get(`/posts/${this.$route.params.slug}/`)
+  },
   data() {
     return {
       post: {},
@@ -47,9 +55,6 @@ export default {
     auth() {
       return this.$store.$auth
     },
-  },
-  async fetch() {
-    this.post = await this.$axios.$get(`/posts/${this.$route.params.slug}/`)
   },
   methods: {
     goBack() {
