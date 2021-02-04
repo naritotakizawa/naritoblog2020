@@ -10,22 +10,23 @@ cd naritoblog2020
 ```
 
 ```
-vim backend/project/settings.py
+vim docker-compose.yml
 ```
 
-サーバーの IP アドレスを足す(サーバーではなく、手元の PC で動かしたいなら不要)
+サーバーの IP アドレスやドメインに書き換える(サーバーではなく、手元の PC で動かしたいなら不要)
 
 ```python
-ALLOWED_HOSTS = ['127.0.0.1', 'backend', 'Add Your IP Address!!']
+ALLOWED_HOSTS=127.0.0.1
+↓
+ALLOWED_HOSTS=narito.ninja
 ```
 
 ```
+docker-compose build
 docker-compose up
 ```
 
-〜この辺でコーヒーなどを淹れて待つ〜
-
-http://your-ip にアクセスする（サーバーではなく、手元の PC で動かしたいならhttp://127.0.0.1 にアクセス）
+少し待った後、http://IPorDomain にアクセスする（サーバーではなく、手元の PC で動かしたいならhttp://127.0.0.1 にアクセス）
 
 username: admin
 password: admin123

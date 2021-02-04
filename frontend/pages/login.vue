@@ -1,12 +1,12 @@
 <template>
-  <form @submit.prevent="login" class="min-container">
+  <form class="min-container" @submit.prevent="login">
     <div class="field">
       <label for="username">ユーザーネーム</label>
-      <input type="text" v-model="form.username" id="username" />
+      <input id="username" v-model="form.username" type="text" />
     </div>
     <div class="field">
       <label for="password">パスワード</label>
-      <input type="password" v-model="form.password" id="password" />
+      <input id="password" v-model="form.password" type="password" />
     </div>
     <button type="submit">送信</button>
   </form>

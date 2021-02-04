@@ -1,6 +1,6 @@
 <template>
   <header>
-    <NuxtLink :to="{ name: 'index' }" id="left"> Blog.narito </NuxtLink>
+    <NuxtLink id="left" :to="{ name: 'index' }"> Blog.narito </NuxtLink>
 
     <div id="right">
       <ul>
@@ -13,7 +13,7 @@
         </li>
 
         <li v-if="auth.loggedIn">
-          <a v-if="auth.loggedIn" @click.prevent="logout" href="#"> Logout </a>
+          <a v-if="auth.loggedIn" href="#" @click.prevent="logout"> Logout </a>
         </li>
 
         <li v-else>
@@ -26,7 +26,7 @@
       <Dialog v-if="isOpen" @close="isOpen = false">
         <form @submit.prevent="search">
           <div class="field">
-            <input type="text" v-model="keyword" />
+            <input v-model="keyword" type="text" />
           </div>
           <button type="submit" class="search-button">検索する</button>
         </form>

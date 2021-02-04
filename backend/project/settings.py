@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from datetime import timedelta
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,8 +27,11 @@ SECRET_KEY = '(b(o28id6$s37lz8h-yzi0ki(^g4&!eli%8v1ezuqo8ku7%fte'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'backend']
+ALLOWED_HOSTS = ['backend']
 
+EXTRA_ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
+if EXTRA_ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(EXTRA_ALLOWED_HOSTS)
 
 # Application definition
 
