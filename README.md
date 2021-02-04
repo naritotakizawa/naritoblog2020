@@ -2,6 +2,16 @@
 
 Nuxt.js と Django rest framework で作成した、シンプルなブログです。
 
+TOPページ
+
+![Screenshot_2020-12-28 frontend](https://user-images.githubusercontent.com/28292340/103190121-f135b580-4912-11eb-9f86-7ca6fda6233f.png)
+
+
+記事ページ
+
+![Screenshot_2020-12-28 Switchのゲームが沢山あって、どれをやるか決められない](https://user-images.githubusercontent.com/28292340/103190127-f5fa6980-4912-11eb-992f-f3672558082f.png)
+
+
 ## 動かし方
 
 ```
