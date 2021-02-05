@@ -29,6 +29,9 @@ services:
     expose:
       - "3000"
     command: "npm run start"
+    environment:
+      - AXIOS_BASEURL=http://backend:8000/api
+      - AXIOS_BROWSER_BASEURL=/api
 
   nginx:
     image: nginx:1.13
